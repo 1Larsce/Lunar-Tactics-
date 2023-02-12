@@ -473,8 +473,8 @@ function animate() {
 
 	requestAnimationFrame( animate );
 
-  tactics.position.x += 0.01;
-  lunar.position.x += 0.01;
+  tactics.position.x += 0.20;
+  lunar.position.x += 0.20;
   if(tactics.position.x > 100){
     tactics.position.x = -100;
   }
