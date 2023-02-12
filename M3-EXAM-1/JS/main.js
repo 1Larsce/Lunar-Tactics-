@@ -439,8 +439,8 @@ function particles() {
   }
 
   starGeo = new THREE.BufferGeometry().setFromPoints(points);
-  
-  let sprite = new THREE.TextureLoader().load("assets/images/flare.png");
+
+  let sprite = new THREE.TextureLoader().load("./assets/images/flare.png");
   let starMaterial = new THREE.PointsMaterial({
     color: 0xE8FF00,
     size: 0.7,
@@ -450,6 +450,15 @@ function particles() {
   stars = new THREE.Points(starGeo, starMaterial);
   scene.add(stars);
 }
+
+function animateParticles() {
+    starGeo.verticesNeedUpdate = true;
+    stars.position.y -= 2;
+    
+    if(stars.position.y < -180){
+      stars.position.y = 180;
+    }
+  };
 
 //Floating Lunar Tactics Name
 const tacticsGeometry = new THREE.BoxGeometry(30,1,20);
@@ -472,6 +481,7 @@ scene.add(lunar);
 function animate() {
 
 	requestAnimationFrame( animate );
+  animateParticles();
 
   tactics.position.x += 0.20;
   lunar.position.x += 0.20;
